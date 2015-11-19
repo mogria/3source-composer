@@ -16,5 +16,5 @@ VOLUME ["/data"]
 WORKDIR /data/www
 
 USER www-data
-ENTRYPOINT ["composer"]
+ENTRYPOINT ["umask-wrapper.sh", "composer"]
 CMD ["--help"]
