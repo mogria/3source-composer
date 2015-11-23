@@ -1,12 +1,11 @@
 #!/bin/sh
 
-tools[0]=composer
-tools[1]=phpunit
-
-for t in "${tools[@]}"; do
-    if [[ "$t" == "$1" ]]; then
-        exec "$t" "${@:2}"
-    fi
-done
+if [ "$1" == "composer" ]; then
+    shift
+    exec composer "$@"
+elif [ "$1" == "phpunit" ]; then
+    shift
+    exec phpunit "$@"
+fi
 
 exec "composer" "$@"
