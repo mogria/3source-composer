@@ -15,13 +15,15 @@ RUN apk add --update \
     && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer self-update && \
-    composer global require "phpunit/phpunit=5.*.*"
+    composer self-update
 
 RUN mkdir -p /data/www
 VOLUME ["/data"]
 WORKDIR /data/www
 
 USER www-data
+RUN composer global require "phpunit/phpunit=5.*.*" && \
+    echo 'export PATH="$PATH:$HOME/.composer/vendor/bin" >> "$HOME/.profile"'
+
 ENTRYPOINT ["umask-wrapper.sh", "toolscript.sh"]
 CMD ["--help"]
