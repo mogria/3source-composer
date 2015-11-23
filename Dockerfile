@@ -4,6 +4,7 @@ MAINTAINER "Mogria" <m0gr14@gmail.com>
 
 WORKDIR /tmp
 
+USER root
 RUN apk add --update curl git php-mcrypt php-gd && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
