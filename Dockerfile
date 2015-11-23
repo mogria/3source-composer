@@ -22,8 +22,7 @@ VOLUME ["/data"]
 WORKDIR /data/www
 
 USER www-data
-RUN composer global require "phpunit/phpunit=5.*.*" && \
-    echo 'export PATH="$PATH:$HOME/.composer/vendor/bin" >> "$HOME/.profile"'
+RUN composer global require "phpunit/phpunit=5.*.*"
 
 ENTRYPOINT ["umask-wrapper.sh", "toolscript.sh"]
 CMD ["--help"]

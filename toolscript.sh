@@ -3,9 +3,9 @@
 if [ "$1" == "composer" ]; then
     shift
     exec composer "$@"
-elif [ "$1" == "phpunit" ]; then
+elif [ -f "/data/www/vendor/bin/$1" ]; then
     shift
-    exec phpunit "$@"
+    exec "/data/www/vendor/bin/$1" "$@"
 fi
 
 exec "composer" "$@"
