@@ -8,6 +8,7 @@ USER root
 RUN apk add --update \
     curl \
     git \
+    php-dom \
     php-gd \
     php-json \
     php-mcrypt \
