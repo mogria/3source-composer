@@ -4,11 +4,11 @@ MAINTAINER "Mogria" <m0gr14@gmail.com>
 
 WORKDIR /tmp
 
-RUN apt-get update -y && \
-    apt-get install -y curl git php5-mcrypt php5-gd && \
+RUN apk add --update curl git php-mcrypt php-gd && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer self-update
+    composer self-update && \
+    apk del curl
    
 
 RUN mkdir -p /data/www
