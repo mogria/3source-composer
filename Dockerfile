@@ -5,19 +5,18 @@ MAINTAINER "Mogria" <m0gr14@gmail.com>
 WORKDIR /tmp
 
 USER root
-RUN apk add --update
+RUN apk add --update \
     curl \
     git \
     php-gd \
     php-json \
     php-mcrypt \
+    php-openssl \
     php-phar \
     && \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer && \
-    composer self-update && \
-    apk del curl
-   
+    composer self-update
 
 RUN mkdir -p /data/www
 VOLUME ["/data"]
